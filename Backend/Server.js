@@ -17,8 +17,8 @@ dotenv.config()
 const app = express()
 const server = http.createServer(app)
 const allowedOrigins = [
-  "https://wdu-healthcare.netlify.app",
-  "https://adminpannel-for-wdu.netlify.app",
+  "https://new-wdu-healthsystem.netlify.app",
+  "https://new-wdu-adminpannel-healthsystem.netlify.app",
 ];
 
 app.use(cors({
