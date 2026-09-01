@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("https://healthcare-for-wdu-netlify-3.onrender.com");
+const socket = io("https://new-wdu-healthsystem.onrender.com");
 
 socket.on("connect", () => {
   console.log("Doctor connected:", socket.id);
