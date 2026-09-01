@@ -11,6 +11,8 @@ import QueueRouter from './Routes/QueueRoute.js';
 import consultationRouter from "./Routes/ConsultationRoute.js";
 import http from 'http'
 import {Server} from 'socket.io'
+import bcrypt from 'bcrypt'
+import Admin from './models/adminModel.js'
 
 
 dotenv.config()
@@ -20,6 +22,25 @@ const allowedOrigins = [
   "https://new-wdu-healthsystem.netlify.app",
   "https://new-wdu-adminpannel-healthsystem.netlify.app",
 ];
+app.post('/api/create-admin', async (req, res) =>{
+  try {
+    const { email, password } = req.body; 
+    const exist = await Admin.findOne({ email });
+
+    if (exist) {
+      return res.status(400).json({ message: 'Admin with this email already exists' });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newAdmin = new Admin({ email, password: hashedPassword , role: 'admin' });
+
+    await newAdmin.save();
+
+    res.status(201).json({ message: 'Admin created successfully' });
+  } catch (error) {
+    console.error('Error creating admin:', error);
+    res.status(500).json({ message: 'Internal server error' });
+    }
+  })
 
 app.use(cors({
   origin: allowedOrigins,
