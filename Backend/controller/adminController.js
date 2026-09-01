@@ -6,6 +6,7 @@ import 'dotenv/config'
 import jwt from 'jsonwebtoken'
 import appointmentModel from '../models/appointmentModel.js'
 import userModel from '../models/UserModel.js'
+import AdminModel from '../models/adminModel.js'
 // adding Doctor
 
 const addDoctor = async (req,res)=>{
@@ -67,7 +68,43 @@ const addDoctor = async (req,res)=>{
     }
 
 }
+// Api for Admin create login
+const createAdmin = async (req, res) => {
+    try{
+        const {username, email, password} = req.body
+        const existingAdmin = await AdminModel.findOne({ email });
+        if (existingAdmin) {
+            return res.status(400).json({ message: 'Admin with this email already exists' });
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newAdmin = new AdminModel({ username, email, password: hashedPassword });
+        await newAdmin.save();
+        res.status(201).json({ message: 'Admin created successfully' });
+    }
+    catch (error) {
+        console.log("error connection", error)
+        res.json({success:false,message:error.message})
+    }
+}
+const LoginAdmin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const admin = await AdminModel.findOne({ email });
+        if (!admin) {
+            return res.status(400).json({ message: 'Admin not found' });
+        }
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) {
 
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+        const atoken = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ atoken, message: 'Admin login successful' });
+    } catch (error) {
+        console.log("error connection", error)
+        res.json({success:false,message:error.message})
+    }
+}
 // API FOR ADMIN LOGIN
 const adminLogin = async (req,res)=>{
     try {
@@ -178,4 +215,4 @@ const adminDashBoard = async(req, res)=>{
 
 
 
-export {addDoctor, adminLogin, allDoctors, appointmentAdmin, appointmentCancelled , adminDashBoard} 
+export {addDoctor, adminLogin, allDoctors, appointmentAdmin, appointmentCancelled , adminDashBoard, createAdmin, LoginAdmin} 

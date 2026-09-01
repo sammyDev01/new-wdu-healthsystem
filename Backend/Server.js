@@ -22,25 +22,25 @@ const allowedOrigins = [
   "https://new-wdu-healthsystem.netlify.app",
   "https://new-wdu-adminpannel-healthsystem.netlify.app",
 ];
-app.post('/api/create-admin', async (req, res) =>{
-  try {
-    const { email, password } = req.body; 
-    const exist = await Admin.findOne({ email });
+// app.post('/api/create-admin', async (req, res) =>{
+//   try {
+//     const { email, password } = req.body; 
+//     const exist = await Admin.findOne({ email });
 
-    if (exist) {
-      return res.status(400).json({ message: 'Admin with this email already exists' });
-    }
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newAdmin = new Admin({ email, password: hashedPassword , role: 'admin' });
+//     if (exist) {
+//       return res.status(400).json({ message: 'Admin with this email already exists' });
+//     }
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const newAdmin = new Admin({ email, password: hashedPassword , role: 'admin' });
 
-    await newAdmin.save();
+//     await newAdmin.save();
 
-    res.status(201).json({ message: 'Admin created successfully' });
-  } catch (error) {
-    console.error('Error creating admin:', error);
-    res.status(500).json({ message: 'Internal server error' });
-    }
-  })
+//     res.status(201).json({ message: 'Admin created successfully' });
+//   } catch (error) {
+//     console.error('Error creating admin:', error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
 
 app.use(cors({
   origin: allowedOrigins,
