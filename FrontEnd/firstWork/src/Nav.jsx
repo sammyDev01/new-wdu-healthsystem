@@ -453,7 +453,7 @@ const [hide, setHide] =useState(false)
         </NavLink>
 
 
-        NavLinkk
+        <NavLink
           to="/doctors"
           onClick={() => setShowmenu(false)}
           className="
