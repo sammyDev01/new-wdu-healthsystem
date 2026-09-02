@@ -252,6 +252,7 @@ const [hide, setHide] =useState(false)
           top-full right-0
           pt-2
           hidden group-hover:block
+          group-active:block
           z-50
         ">
 
