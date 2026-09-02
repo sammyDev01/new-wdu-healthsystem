@@ -4,6 +4,7 @@ import { AdminContext } from '../../context/adminContext'
 import { useEffect } from 'react'
 import { AppContext } from '../../context/appContext'
 import {assets} from '../../assets/assets_admin/assets'
+import { FaCalendarCheck } from 'react-icons/fa6'
 
 const Appointment = () => {
 
@@ -16,7 +17,7 @@ const Appointment = () => {
     }
  },[aToken])
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+    <div className="bg-white border border-slate-200 rounded-2xl w-full m-2 shadow-sm overflow-hidden">
 
   {/* ================= HEADER ================= */}
   <div className="px-5 sm:px-6 py-5 border-b border-slate-200 bg-gradient-to-r from-white to-slate-50">
@@ -191,7 +192,7 @@ const Appointment = () => {
             <div className="flex items-center gap-2">
 
               <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                📅
+                <FaCalendarCheck className="w-4 h-4" />
               </div>
 
               <div>
@@ -350,7 +351,7 @@ const Appointment = () => {
       <div className="flex flex-col items-center justify-center py-20 px-5">
 
         <div className="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center text-3xl mb-4">
-          📅
+          <FaCalendarCheck className="w-10 h-10 text-blue-500" />
         </div>
 
         <h3 className="text-lg font-bold text-slate-700">

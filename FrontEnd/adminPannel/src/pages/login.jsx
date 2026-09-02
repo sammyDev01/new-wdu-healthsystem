@@ -42,27 +42,17 @@ const Login = () => {
 
                     const { data } = await axios.post(
                         backendUrl + '/api/admin/create-admin',
-                        {
-                            username,
-                            email,
-                            password
-                        }
+                        {username,  email,password}
                     );
-
                     console.log(data);
-
                     if (data.success) {
-
                         toast.success(data.message);
-
-                        // Save admin token
+                        // // Save admin token
                         localStorage.setItem('aToken', data.token);
-
-                        // Put token into AdminContext
+                        // // Put token into AdminContext
                         setAToken(data.token);
-
                         // Clear form
-                        setUsername('');
+                        setUserName('');
                         setEmail('');
                         setPassword('');
 

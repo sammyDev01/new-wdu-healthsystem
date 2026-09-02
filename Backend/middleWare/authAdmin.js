@@ -14,9 +14,13 @@ const authAdmin = (req, res, next) => {
             return res.json({success:false, message:"Token not found"})
         }
         const decoded_token = jwt.verify(aToken, process.env.JWT_SECRET)
-        if(decoded_token !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD){
+        if(!decoded_token.id){
             return res.json({success:false, message:"Invalid Token"})
         }
+        req.adminId = decoded_token.id;
+        // if(decoded_token !== process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD){
+        //     return res.json({success:false, message:"Invalid Token"})
+        // }
         next()
   } catch (error) {
         console.log("error connection", error)

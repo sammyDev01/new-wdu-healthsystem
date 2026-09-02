@@ -21,6 +21,8 @@ const server = http.createServer(app)
 const allowedOrigins = [
   "https://new-wdu-healthsystem.netlify.app",
   "https://new-wdu-adminpannel-healthsystem.netlify.app",
+  "http://localhost:3000",
+  "http://localhost:5174"
 ];
 // app.post('/api/create-admin', async (req, res) =>{
 //   try {
@@ -43,7 +45,9 @@ const allowedOrigins = [
 // });
 
 app.use(cors({
-  origin: allowedOrigins,
+  // origin: allowedOrigins,
+  //  origin: "http://localhost:5174",
+   origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true,
 }));
 
@@ -54,7 +58,9 @@ app.use(express.urlencoded({extended: true}))
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    // origin: allowedOrigins,
+    // origin:  "http://localhost:5174",
+    origin: ["http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST"]
   }
 });
@@ -108,11 +114,11 @@ app.get('/',(req,res) =>{
     res.send('API WORKING')
 })
 
-// server.listen(4000, () => {
-//   console.log("Server running on port 4000");
-// });
-// app
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on PORT ${PORT}`);
+server.listen( PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+// app
+// server.listen(PORT, '0.0.0.0', () => {
+//     console.log(`Server running on PORT ${PORT}`);
+// });
 // server.listen(port, ()=> console.log('server started', port))

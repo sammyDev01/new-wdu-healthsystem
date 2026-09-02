@@ -62,10 +62,7 @@ const Footer = () => {
           leading-6
           sm:leading-7
         ">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Ab excepturi adipisci voluptate aliquid. Numquam doloribus
-          distinctio possimus tempora repellat voluptatibus quaerat,
-          velit inventore dolores omnis sequi corrupti placeat rem officia!
+         The healthcare industry incorporates several sectors that are dedicated to providing health care services and products. As a basic framework for defining the sector, the United Nations' International Standard Industrial Classification categorizes health care as generally consisting of hospital activities, medical and dental practice activities, and "other human health activities." The last class involves activities of, or under the supervision of, nurses, midwives, physiotherapists, scientific or diagnostic laboratories, pathology clinics, residential health facilities, patient advocates[25] or other allied health professions.
         </p>
 
       </div>
@@ -201,7 +198,7 @@ const Footer = () => {
         text-center
         leading-5
       ">
-        Copyright © 2026 Prescripto - All Rights Reserved.
+        Copyright © 2026 western delta university health services - All Rights Reserved.
       </p>
 
     </div>

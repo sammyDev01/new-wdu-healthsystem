@@ -75,14 +75,12 @@ const createAdmin = async (req, res) => {
         const { username, email, password } = req.body;
 
         const existingAdmin = await AdminModel.findOne({ email });
-
         if (existingAdmin) {
             return res.status(400).json({
                 success: false,
                 message: 'Admin with this email already exists'
             });
         }
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newAdmin = new AdminModel({
@@ -90,15 +88,12 @@ const createAdmin = async (req, res) => {
             email,
             password: hashedPassword
         });
-
         await newAdmin.save();
-
         const token = jwt.sign(
             { id: newAdmin._id, email: newAdmin.email, role: 'admin' },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
-
         res.status(201).json({
             success: true,
             message: 'Admin created successfully',
@@ -142,8 +137,7 @@ const LoginAdmin = async (req, res) => {
 
         const token = jwt.sign(
             { id: admin._id },
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            process.env.JWT_SECRET
         );
 
         res.json({

@@ -15,8 +15,8 @@ adminRouter.post('/change-availability',authAdmin, changeAvailability)
 adminRouter.get('/appointmentAdminOne',authAdmin, appointmentAdmin)
 adminRouter.post('/appointmentCancelledOne',authAdmin, appointmentCancelled)
 adminRouter.get('/adminDashBoardOne',authAdmin, adminDashBoard)
-adminRouter.post('/create-admin',authAdmin, createAdmin)
-adminRouter.post('/login-admin', authAdmin, LoginAdmin)
+adminRouter.post('/create-admin', createAdmin)
+adminRouter.post('/login-admin',  LoginAdmin)
 
 
 

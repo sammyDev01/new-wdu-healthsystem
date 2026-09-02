@@ -5,6 +5,7 @@ import DoctorQueue from "../../pages/Doctors/DoctorQueue";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MdMedicalServices } from "react-icons/md";
+import {FaUserDoctor} from "react-icons/fa6"
 
 
 
@@ -37,7 +38,7 @@ const navigate  = useNavigate();
   const getConsultations = async () => {
     try {
       setLoading(true)
-      const {data} = await axios.get("https://healthcare-for-wdu-netlify-3.onrender.com/api/consultation/doctor", {headers: {Authorization: `Bearer ${dToken}`}});
+      const {data} = await axios.get("http://localhost:5000/api/consultation/doctor", {headers: {Authorization: `Bearer ${dToken}`}});
 
       if (data.success) {
         setConsultations(data.consultations);
@@ -91,7 +92,7 @@ const navigate  = useNavigate();
   const startConsultation = async () => {
     try {
       const response = await axios.put(
-        `https://healthcare-for-wdu-netlify-3.onrender.com/api/consultation/start/${selectedConsultation._id}`,
+        `http://localhost:5000/api/consultation/start/${selectedConsultation._id}`,
         {},
         {
           headers: {
@@ -127,7 +128,7 @@ const navigate  = useNavigate();
     try {
       setSaving(true);
 
-      const {data} = await axios.put(`https://healthcare-for-wdu-netlify-3.onrender.com/api/consultation/update/${selectedConsultation._id}`,formData,{headers: {Authorization: `Bearer ${dToken}`,}});
+      const {data} = await axios.put(`http://localhost:5000/api/consultation/update/${selectedConsultation._id}`,formData,{headers: {Authorization: `Bearer ${dToken}`,}});
       if (data.success) {
         // alert("Consultation saved successfully");
         toast.success(data.message)
@@ -157,7 +158,7 @@ const navigate  = useNavigate();
     }
 
     try {
-      const {data} = await axios.put(`https://healthcare-for-wdu-netlify-3.onrender.com/api/consultation/complete/${selectedConsultation._id}`,{},{headers: {Authorization: `Bearer ${dToken}`}});
+      const {data} = await axios.put(`http://localhost:5000/api/consultation/complete/${selectedConsultation._id}`,{},{headers: {Authorization: `Bearer ${dToken}`}});
 
       if (data.success) {
        toast.success(data.message)
@@ -353,7 +354,7 @@ const navigate  = useNavigate();
                 text-3xl
                 mb-3
               ">
-                👤
+                <FaUserDoctor className="text-blue-500 text-xl" />
               </div>
 
               <p className="

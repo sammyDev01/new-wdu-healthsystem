@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import { AdminContext } from '../../context/adminContext'
 import {assets} from '../../assets/assets_admin/assets'
 import { AppContext } from '../../context/appContext';
+import { FaCalendarCheck, FaListOl, FaUserDoctor, FaUserInjured } from 'react-icons/fa6';
+// import { FaList0l } from 'react-icons/fa6';
 
 const DashBoard = () => {
 
@@ -77,11 +79,12 @@ const DashBoard = () => {
 
           <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
 
-            <img
+            {/* <img
               src={assets.doctor_icon}
               alt="Doctors"
               className="w-7 h-7"
-            />
+            /> */}
+            <FaUserDoctor className="w-7 h-7 text-blue-500 text-xl" />
 
           </div>
 
@@ -115,12 +118,12 @@ const DashBoard = () => {
 
           <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
 
-            <img
+            {/* <img
               src={assets.patients_icon}
               alt="Patients"
               className="w-7 h-7"
-            />
-
+            /> */}
+              <FaUserInjured className="w-7 h-7 text-blue-500 text-xl" />
           </div>
 
         </div>
@@ -151,12 +154,12 @@ const DashBoard = () => {
 
           <div className="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center">
 
-            <img
+            {/* <img
               src={assets.appointments_icon}
               alt="Appointments"
               className="w-7 h-7"
-            />
-
+            /> */}
+                <FaCalendarCheck className="w-7 h-7 text-violet-500 text-xl" />
           </div>
 
         </div>
@@ -186,7 +189,7 @@ const DashBoard = () => {
           </div>
 
           <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-            🎫
+           <FaListOl className="w-7 h-7 text-blue-100" />
           </div>
 
         </div>
@@ -450,7 +453,7 @@ const DashBoard = () => {
           <div className="py-12 text-center">
 
             <div className="w-14 h-14 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-2xl mb-3">
-              📅
+              <FaCalendarCheck className="text-blue-500 text-xl" />
             </div>
 
             <p className="font-semibold text-slate-700">
@@ -666,7 +669,9 @@ const DashBoard = () => {
                 >
 
                   <div className="text-3xl mb-3">
-                    🎫
+                    <div>
+                    <FaListOl className="mx-auto text-slate-400 text-blue-500 text-xl" />
+                    </div>
                   </div>
 
                   <p className="font-semibold text-slate-700">

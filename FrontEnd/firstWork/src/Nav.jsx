@@ -11,6 +11,7 @@ const Nav = () => {
   const {token, setToken, userData, setUserData} = useContext(AppContext)
 
   const [showmenu, setShowmenu] = useState(false)
+  const [showMenus, setShowMenus] = useState(false)
   const logout = () => {
     setToken(false)
     localStorage.removeItem('token')
@@ -70,7 +71,7 @@ const [hide, setHide] =useState(false)
         transition-colors duration-300
       "
     >
-      <li className="list-none">HOME</li>
+      <li className="list-none">Home</li>
 
       <hr className="
         absolute
@@ -117,28 +118,6 @@ const [hide, setHide] =useState(false)
       "
     >
       <li className="list-none">Doctors</li>
-
-      <hr className="
-        absolute
-        bottom-0 left-1/2
-        -translate-x-1/2
-        w-0 group-hover:w-3/5
-        h-0.5
-        border-none
-        bg-blue-600
-        transition-all duration-300
-      " />
-    </NavLink>
-    
-       <NavLink
-      to="/service"
-      className="
-        group relative py-2
-        hover:text-blue-700
-        transition-colors duration-300
-      "
-    >
-      <li className="list-none">Consultation</li>
 
       <hr className="
         absolute
@@ -201,36 +180,145 @@ const [hide, setHide] =useState(false)
         py-2
       ">
 
-        <div className="relative">
+        <div className="relative group">
 
-          <img
-            className="
-              w-8 h-8
-              sm:w-9 sm:h-9
-              md:w-10 md:h-10
-              rounded-full
-              object-cover
-              border-2
-              border-blue-100
-              group-hover:border-teal-400
-              shadow-sm
-              transition-all duration-300
-            "
-            src={userData.image}
-            alt=""
-          />
+  {/* Profile image */}
+  <button
+    type="button"
+    onClick={() => setShowMenus((prev) => !prev)}
+    className="relative focus:outline-none"
+  >
+    <img
+      className="
+        w-8 h-8
+        sm:w-9 sm:h-9
+        md:w-10 md:h-10
+        rounded-full
+        object-cover
+        border-2
+        border-blue-100
+        group-hover:border-teal-400
+        shadow-sm
+        transition-all duration-300
+        cursor-pointer
+      "
+      src={userData.image}
+      alt="Profile"
+    />
 
-          {/* Online */}
-          <span className="
-            absolute
-            right-0 bottom-0
-            w-2.5 h-2.5
-            bg-emerald-500
-            border-2 border-white
-            rounded-full
-          " />
+    {/* Online */}
+    <span
+      className="
+        absolute
+        right-0 bottom-0
+        w-2.5 h-2.5
+        bg-emerald-500
+        border-2 border-white
+        rounded-full
+      "
+    />
+  </button>
 
-        </div>
+  {/* Dropdown */}
+  <div
+    className={`
+      absolute
+      top-full right-0
+      pt-2
+      z-50
+      ${showMenus ? "block" : "hidden"}
+      md:group-hover:block
+    `}
+  >
+    <div
+      className="
+        w-56
+        bg-white
+        border border-slate-200
+        rounded-2xl
+        shadow-[0_15px_40px_rgba(15,23,42,0.12)]
+        p-2
+      "
+    >
+
+      <p
+        onClick={() => {
+          navigate("/my-profile");
+          setShowMenus(false);
+        }}
+        className="
+          px-4 py-3
+          rounded-xl
+          text-slate-600
+          hover:bg-blue-50
+          hover:text-blue-700
+          cursor-pointer
+          transition
+        "
+      >
+        My profile
+      </p>
+
+      <p
+        onClick={() => {
+          navigate("/service");
+          setShowMenus(false);
+        }}
+        className="
+          px-4 py-3
+          rounded-xl
+          text-slate-600
+          hover:bg-blue-50
+          hover:text-blue-700
+          cursor-pointer
+          transition
+        "
+      >
+        My consultation history
+      </p>
+
+      <p
+        onClick={() => {
+          navigate("/my-appointment");
+          setShowMenus(false);
+        }}
+        className="
+          px-4 py-3
+          rounded-xl
+          text-slate-600
+          hover:bg-teal-50
+          hover:text-teal-700
+          cursor-pointer
+          transition
+        "
+      >
+        My Appointment
+      </p>
+
+      <div className="h-px bg-slate-100 my-1" />
+
+      <p
+        onClick={() => {
+          logout();
+          setShowMenus(false);
+        }}
+        className="
+          px-4 py-3
+          rounded-xl
+          text-red-500
+          hover:bg-red-50
+          hover:text-red-600
+          cursor-pointer
+          transition
+        "
+      >
+        Logout
+      </p>
+
+    </div>
+  </div>
+
+</div>
 
 
         <img
@@ -252,7 +340,7 @@ const [hide, setHide] =useState(false)
           top-full right-0
           pt-2
           hidden group-hover:block
-          group-active:block
+          
           z-50
         ">
 

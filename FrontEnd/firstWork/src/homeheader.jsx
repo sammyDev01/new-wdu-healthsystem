@@ -75,6 +75,7 @@ const Homeheader = () => {
       lg:px-12
       xl:px-16
       py-10
+      m-0
       sm:py-14
       md:py-16
       lg:py-20
@@ -132,17 +133,18 @@ const Homeheader = () => {
         />
 
         <p className="
+         w-full
+          max-w-[400px]
+          text-slate-300
+          text-center
+          md:text-left
           text-xs
-          sm:text-sm
+          text-sm
           text-blue-50
           font-light
-          leading-6
+          leading-5
         ">
-          It is long established fact that a reader will be
-          distracted by the readable content of a page when
-          looking at its layout. The point of using Lorem Ipsum
-          is that it has more-or-less normal distribution of
-          letters.
+          Healthcare,is the improvement or maintenance of health via the prevention, diagnosis, treatment, amelioration or cure of disease, illness, injury, and other physical and mental impairments in people. 
         </p>
 
       </div>

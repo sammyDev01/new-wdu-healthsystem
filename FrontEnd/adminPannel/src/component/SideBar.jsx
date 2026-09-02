@@ -4,7 +4,7 @@ import { AdminContext } from '../context/adminContext'
 import { NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets_admin/assets'
 import { DoctorContext } from '../context/doctorContext'
-import {FaUserDoctor} from 'react-icons/fa6' 
+import {FaListOl, FaUserDoctor} from 'react-icons/fa6' 
 import { MdQueue } from "react-icons/md"
 
 const SideBar = () => {
@@ -220,7 +220,7 @@ const SideBar = () => {
                   : ''
                 }
               `}> 
-                <img 
+                {/* <img 
                   className='
                     w-5
                     h-5
@@ -229,7 +229,8 @@ const SideBar = () => {
                   '
                   src={assets.people_icon} 
                   alt="" 
-                /> 
+                />  */}
+                <FaListOl className='w-5 h-6 object-contain flex-shrink-0' />
                 <p className='hidden md:block text-sm lg:text-[15px] font-medium'>Queue Statics</p> 
             </NavLink> 
         </ul>} 

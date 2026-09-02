@@ -147,6 +147,7 @@ const bookAppointment = async (req, res) => {
             return res.json({success:false, message:" User ID not Found"})
 
         }
+        
           if(!doctorId || !slotDate || !slotTime){
             return res.json({success:false, message:" Missing appointment Found"})
             

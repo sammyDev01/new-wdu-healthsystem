@@ -1,7 +1,7 @@
 import React, { useContext , useEffect} from 'react'
 import { DoctorContext } from '../../context/doctorContext'
 import { AdminContext } from '../../context/adminContext';
-
+import { FaListOl, FaClock, FaUserDoctor, FaCheck } from 'react-icons/fa6'
 const Queue = () => {
 
 
@@ -76,7 +76,7 @@ const Queue = () => {
           </div>
 
           <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
-            🎫
+           <FaListOl className="w-7 h-7 text-blue-600" />
           </div>
 
         </div>
@@ -102,7 +102,7 @@ const Queue = () => {
           </div>
 
           <div className="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center">
-            ⏳
+            <FaClock className="w-6 h-6 text-amber-600" />
           </div>
 
         </div>
@@ -128,7 +128,7 @@ const Queue = () => {
           </div>
 
           <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
-            🩺
+            <FaUserDoctor className="w-6 h-6 text-blue-600" />
           </div>
 
         </div>
@@ -154,7 +154,7 @@ const Queue = () => {
           </div>
 
           <div className="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center">
-            ✓
+            <FaCheck className="w-6 h-6 text-emerald-600" />
           </div>
 
         </div>
