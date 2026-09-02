@@ -129,8 +129,8 @@ const [hide, setHide] =useState(false)
         transition-all duration-300
       " />
     </NavLink>
-
-<NavLink
+    
+       <NavLink
       to="/service"
       className="
         group relative py-2
@@ -138,7 +138,7 @@ const [hide, setHide] =useState(false)
         transition-colors duration-300
       "
     >
-      <li className="list-none">Consulta</li>
+      <li className="list-none">Consultation</li>
 
       <hr className="
         absolute
@@ -151,6 +151,7 @@ const [hide, setHide] =useState(false)
         transition-all duration-300
       " />
     </NavLink>
+
 
     <NavLink
       to="/contact"
@@ -411,6 +412,7 @@ const [hide, setHide] =useState(false)
             rounded-full
             bg-slate-100
             hover:bg-red-50
+            active:bg-red-50
             flex items-center justify-center
             transition
           "
@@ -451,7 +453,7 @@ const [hide, setHide] =useState(false)
         </NavLink>
 
 
-        <NavLink
+        NavLinkk
           to="/doctors"
           onClick={() => setShowmenu(false)}
           className="
@@ -482,28 +484,20 @@ const [hide, setHide] =useState(false)
           </p>
         </NavLink>
 
-
-        <NavLink
-      to="/services"
-      className="
-        group relative py-2
-        hover:text-blue-700
-        transition-colors duration-300
-      "
-    >
-      <li className="list-none">Consultation</li>
-
-      <hr className="
-        absolute
-        bottom-0 left-1/2
-        -translate-x-1/2
-        w-0 group-hover:w-3/5
-        h-0.5
-        border-none
-        bg-blue-600
-        transition-all duration-300
-      " />
-    </NavLink>
+     <NavLink
+          to="/services"
+          onClick={() => setShowmenu(false)}
+          className="
+            rounded-xl
+            hover:bg-blue-100
+            hover:text-blue-700
+            transition
+          "
+        >
+          <p className="px-4 py-3">
+            Consultation
+          </p>
+        </NavLink>
 
         <NavLink
           to="/contact"
