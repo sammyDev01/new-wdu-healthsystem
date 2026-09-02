@@ -41,7 +41,7 @@ const Login = () => {
                 if (state === "Admin" && isRegister) {
 
                     const { data } = await axios.post(
-                        backendUrl + '/api/admin/register',
+                        backendUrl + '/api/admin/create-admin',
                         {
                             username,
                             email,
