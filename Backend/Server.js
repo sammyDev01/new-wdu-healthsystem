@@ -48,7 +48,9 @@ app.use(cors({
   origin: allowedOrigins,
   //  origin: "http://localhost:5174",
   //  origin: ["http://localhost:5173", "http://localhost:5174"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 // middleware
@@ -61,9 +63,11 @@ const io = new Server(server, {
     origin: allowedOrigins,
     // origin:  "http://localhost:5174",
     // origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
     methods: ["GET", "POST"]
-  }
+  },
 });
+
 
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
