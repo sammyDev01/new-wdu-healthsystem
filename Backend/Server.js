@@ -45,9 +45,9 @@ const allowedOrigins = [
 // });
 
 app.use(cors({
-  // origin: allowedOrigins,
+  origin: allowedOrigins,
   //  origin: "http://localhost:5174",
-   origin: ["http://localhost:5173", "http://localhost:5174"],
+  //  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true,
 }));
 
@@ -58,9 +58,9 @@ app.use(express.urlencoded({extended: true}))
 
 const io = new Server(server, {
   cors: {
-    // origin: allowedOrigins,
+    origin: allowedOrigins,
     // origin:  "http://localhost:5174",
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    // origin: ["http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST"]
   }
 });
