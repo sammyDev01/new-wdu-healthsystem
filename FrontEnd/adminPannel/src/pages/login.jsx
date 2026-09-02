@@ -37,35 +37,41 @@ const Login = () => {
             // =========================
             // ADMIN REGISTRATION
             // =========================
-            if (state === "Admin" && isRegister) {
+           
+                if (state === "Admin" && isRegister) {
 
-                const { data } = await axios.post(
-                    backendUrl + '/api/admin/create-admin',
-                    {
-                        username,
-                        email,
-                        password
+                    const { data } = await axios.post(
+                        backendUrl + '/api/admin/register',
+                        {
+                            username,
+                            email,
+                            password
+                        }
+                    );
+
+                    console.log(data);
+
+                    if (data.success) {
+
+                        toast.success(data.message);
+
+                        // Save admin token
+                        localStorage.setItem('aToken', data.token);
+
+                        // Put token into AdminContext
+                        setAToken(data.token);
+
+                        // Clear form
+                        setUsername('');
+                        setEmail('');
+                        setPassword('');
+
+                    } else {
+                        toast.error(data.message);
                     }
-                );
-
-                console.log(data);
-
-                if (data.success) {
-                    toast.success(data.message);
-
-                    // Clear fields
-                    setUserName('');
-                    setEmail('');
-                    setPassword('');
-
-                    // Go back to login
-                    setIsRegister(false);
-
-                } else {
-                    toast.error(data.message);
                 }
 
-            }
+
 
             // =========================
             // ADMIN LOGIN

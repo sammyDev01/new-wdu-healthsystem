@@ -69,42 +69,101 @@ const addDoctor = async (req,res)=>{
 
 }
 // Api for Admin create login
+
 const createAdmin = async (req, res) => {
-    try{
-        const {username, email, password} = req.body
+    try {
+        const { username, email, password } = req.body;
+
         const existingAdmin = await AdminModel.findOne({ email });
+
         if (existingAdmin) {
-            return res.status(400).json({ message: 'Admin with this email already exists' });
+            return res.status(400).json({
+                success: false,
+                message: 'Admin with this email already exists'
+            });
         }
+
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newAdmin = new AdminModel({ username, email, password: hashedPassword });
+
+        const newAdmin = new AdminModel({
+            username,
+            email,
+            password: hashedPassword
+        });
+
         await newAdmin.save();
-        res.status(201).json({ message: 'Admin created successfully' });
+
+        const token = jwt.sign(
+            { id: newAdmin._id, email: newAdmin.email, role: 'admin' },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.status(201).json({
+            success: true,
+            message: 'Admin created successfully',
+            token
+        });
+
+    } catch (error) {
+        console.log('error connection', error);
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
-    catch (error) {
-        console.log("error connection", error)
-        res.json({success:false,message:error.message})
-    }
-}
+};
+
+
+
 const LoginAdmin = async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const admin = await AdminModel.findOne({ email });
-        if (!admin) {
-            return res.status(400).json({ message: 'Admin not found' });
-        }
-        const isMatch = await bcrypt.compare(password, admin.password);
-        if (!isMatch) {
 
-            return res.status(400).json({ message: 'Invalid credentials' });
+        const { email, password } = req.body;
+
+        const admin = await AdminModel.findOne({ email });
+
+        if (!admin) {
+            return res.status(400).json({
+                success: false,
+                message: 'Admin not found'
+            });
         }
-        const atoken = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ atoken, message: 'Admin login successful' });
+
+        const isMatch = await bcrypt.compare(password, admin.password);
+
+        if (!isMatch) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
+        }
+
+        const token = jwt.sign(
+            { id: admin._id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.json({
+            success: true,
+            token: token,
+            message: 'Admin login successful'
+        });
+
     } catch (error) {
-        console.log("error connection", error)
-        res.json({success:false,message:error.message})
+
+        console.log("error connection", error);
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
-}
+};
+
+
 // API FOR ADMIN LOGIN
 const adminLogin = async (req,res)=>{
     try {
