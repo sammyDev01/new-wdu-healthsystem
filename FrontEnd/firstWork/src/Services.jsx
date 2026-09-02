@@ -22,7 +22,7 @@ const {token} = useContext(AppContext)
     try {
       setLoading(true);
 
-      const response = await axios.get("https://new-wdu-healthsystem-1.onrender.comom/api/consultation/patient",
+      const response = await axios.get("https://new-wdu-healthsystem-1.onrender.com/api/consultation/patient",
         {headers: {
             Authorization: `Bearer ${token}`}});
 

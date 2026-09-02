@@ -38,7 +38,7 @@ const navigate  = useNavigate();
   const getConsultations = async () => {
     try {
       setLoading(true)
-      const {data} = await axios.get("https://new-wdu-healthsystem-1.onrender.comomomomom/api/consultation/doctor", {headers: {Authorization: `Bearer ${dToken}`}});
+      const {data} = await axios.get("https://new-wdu-healthsystem-1.onrender.com/api/consultation/doctor", {headers: {Authorization: `Bearer ${dToken}`}});
 
       if (data.success) {
         setConsultations(data.consultations);
