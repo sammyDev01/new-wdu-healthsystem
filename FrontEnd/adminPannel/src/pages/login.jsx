@@ -6,6 +6,7 @@ import { AdminContext } from '../context/adminContext';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import { DoctorContext } from '../context/doctorContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -20,6 +21,13 @@ const Login = () => {
     const { aToken, setAToken, backendUrl } = useContext(AdminContext);
     const { dToken, setDToken } = useContext(DoctorContext);
 
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (aToken) {
+            navigate('/admin/dashboard');
+        }
+    }, [aToken, navigate]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
