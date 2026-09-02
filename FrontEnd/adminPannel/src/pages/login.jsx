@@ -13,7 +13,7 @@ const Login = () => {
     const [state, setState] = useState('Admin');
     const [isRegister, setIsRegister] = useState(false);
 
-    const [name, setName] = useState('');
+    const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -34,7 +34,7 @@ const Login = () => {
                 const { data } = await axios.post(
                     backendUrl + '/api/admin/create-admin',
                     {
-                        name,
+                        username,
                         email,
                         password
                     }
@@ -46,7 +46,7 @@ const Login = () => {
                     toast.success(data.message);
 
                     // Clear fields
-                    setName('');
+                    setUserName('');
                     setEmail('');
                     setPassword('');
 
@@ -146,14 +146,14 @@ const Login = () => {
 
                     <div className='w-full'>
 
-                        <p>Name</p>
+                        <p>Username</p>
 
                         <input
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={username}
+                            onChange={(e) => setUserName(e.target.value)}
                             className='border border-[#DADADA] rounded w-full p-2 mt-1'
                             type="text"
-                            placeholder="Enter your name"
+                            placeholder="Enter your username"
                             required
                         />
 
