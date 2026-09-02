@@ -34,7 +34,7 @@ const Login = () => {
                 const { data } = await axios.post(
                     backendUrl + '/api/admin/create-admin',
                     {
-                        username,
+                        name,
                         email,
                         password
                     }
