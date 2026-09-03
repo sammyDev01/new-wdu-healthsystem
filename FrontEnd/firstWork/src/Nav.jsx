@@ -227,10 +227,11 @@ const [hide, setHide] =useState(false)
       w-36
       pt-2
       z-50
+     md:group-hover:block
       ${showMenus ? "block" : "hidden"}
     `}
   >
-     {/* md:group-hover:block */}
+    
     <div
       className="
         w-56
@@ -335,74 +336,7 @@ const [hide, setHide] =useState(false)
 
 
         {/* DROPDOWN */}
-        <div className="
-          absolute
-          top-full right-0
-          pt-2
-          hidden group-hover:block
-          
-          z-50
-        ">
-
-          <div className="
-            w-56
-            bg-white
-            border border-slate-200
-            rounded-2xl
-            shadow-[0_15px_40px_rgba(15,23,42,0.12)]
-            p-2
-          ">
-
-            <p
-              onClick={() => navigate('/my-profile')}
-              className="
-                px-4 py-3
-                rounded-xl
-                text-slate-600
-                hover:bg-blue-50
-                hover:text-blue-700
-                cursor-pointer
-                transition
-              "
-            >
-              My profile
-            </p>
-
-            <p
-              onClick={() => navigate('/my-appointment')}
-              className="
-                px-4 py-3
-                rounded-xl
-                text-slate-600
-                hover:bg-teal-50
-                hover:text-teal-700
-                cursor-pointer
-                transition
-              "
-            >
-              My Appointment
-            </p>
-
-            <div className="h-px bg-slate-100 my-1" />
-
-            <p
-              onClick={logout}
-              className="
-                px-4 py-3
-                rounded-xl
-                text-red-500
-                hover:bg-red-50
-                hover:text-red-600
-                cursor-pointer
-                transition
-              "
-            >
-              Logout
-            </p>
-
-          </div>
-
-        </div>
+    
 
       </div>
 
@@ -572,22 +506,6 @@ const [hide, setHide] =useState(false)
             About
           </p>
         </NavLink>
-
-     <NavLink
-          to="/services"
-          onClick={() => setShowmenu(false)}
-          className="
-            rounded-xl
-            hover:bg-blue-100
-            hover:text-blue-700
-            transition
-          "
-        >
-          <p className="px-4 py-3">
-            Consultation
-          </p>
-        </NavLink>
-
         <NavLink
           to="/contact"
           onClick={() => setShowmenu(false)}
