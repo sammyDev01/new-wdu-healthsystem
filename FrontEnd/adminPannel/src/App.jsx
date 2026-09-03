@@ -20,6 +20,7 @@ import DoctorQueue from './pages/Doctors/DoctorQueue';
 import ConsultationDoctor from './pages/Doctors/ConsDoctor'
 import Queue from './pages/Admin/Queue';
 import VideoConsDoc from './pages/Doctors/VideoConsDoc'
+import { Navigate } from 'react-router-dom';
 
 const App = () => {
   const { aToken } = useContext(AdminContext)
@@ -31,10 +32,14 @@ const App = () => {
        <div className='flex items-start'>
         <SideBar />
         <Routes>
-          {/* adimin routes */}
-          <Route path='/' element={<></>} />
+          {/* Home page */}
+          <Route path='/' element={aToken ? 
+          <Navigate to="/admin-dashboard" replace />
+          :<Navigate to="doctorDashBoard" replace />} />
+
           <Route path='/login' element={<Login />} />
 
+            {/* adimin routes */}
             <Route path='/admin-dashboard' element={<DashBoard />} />
             <Route path='/appointment' element={<Appointment />} />
             <Route path='/add-Doctor' element={<AddDoctor />} />

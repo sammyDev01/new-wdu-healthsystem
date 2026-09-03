@@ -224,12 +224,13 @@ const [hide, setHide] =useState(false)
     className={`
       absolute
       top-full right-0
+      w-36
       pt-2
       z-50
       ${showMenus ? "block" : "hidden"}
-      md:group-hover:block
     `}
   >
+     {/* md:group-hover:block */}
     <div
       className="
         w-56
@@ -237,8 +238,7 @@ const [hide, setHide] =useState(false)
         border border-slate-200
         rounded-2xl
         shadow-[0_15px_40px_rgba(15,23,42,0.12)]
-        p-2
-      "
+        p-2"
     >
 
       <p
