@@ -15,7 +15,7 @@ const generateQueue = async (req, res) => {
    
     console.log(userId)
  // Find an available doctor
-    const doctors = await doctorModel.find({ avaliable: true});
+    const doctors = await doctorModel.find({});
 
      if (!doctors || doctors.length === 0) {
       return res.status(404).json({
@@ -25,7 +25,7 @@ const generateQueue = async (req, res) => {
     }
 
 
-    
+
     let doctor = null;
 
     for (const currentDoctor of doctors ){
