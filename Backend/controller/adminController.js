@@ -189,6 +189,17 @@ const allDoctors = async (req, res) =>{
     }
 
 }
+const allUsers = async (req, res) =>{
+    try {
+        const users = await userModel.find({}).select('-password')
+        res.json({success: true, users})
+        
+    } catch (error) {
+    console.log("error connection", error)
+    res.json({success:false,message:error.message})
+    }
+
+}
 
 // API for appointment page
 const appointmentAdmin = async(req, res)=>{
@@ -268,4 +279,4 @@ const adminDashBoard = async(req, res)=>{
 
 
 
-export {addDoctor, adminLogin, allDoctors, appointmentAdmin, appointmentCancelled , adminDashBoard, createAdmin, LoginAdmin} 
+export {addDoctor, adminLogin, allDoctors, appointmentAdmin, appointmentCancelled , allUsers, adminDashBoard, createAdmin, LoginAdmin} 

@@ -318,13 +318,18 @@ const DashBoard = () => {
 
                 <div className="flex items-center gap-3">
 
-                  <div className="w-11 h-11 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">
+                  {/* <div className="w-11 h-11 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">
 
                     {appointment.userData?.name
                       ?.charAt(0)
                       ?.toUpperCase() || "P"}
 
-                  </div>
+                  </div> */}
+                  <img
+                      className="rounded-full w-11 h-11 object-cover border-2 border-white shadow-md ring-1 ring-slate-200"
+                      src={appointment.userData.image}
+                      alt=""
+                    />
 
                   <div>
 
@@ -414,7 +419,27 @@ const DashBoard = () => {
                   </span>
 
 
-                  {appointment.status !== "completed" &&
+        {appointment.cancelled
+
+          ?
+
+          <p className="px-3 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-500 text-xs font-semibold">
+
+            cancelled
+
+          </p>
+
+          :
+
+          <img
+            onClick={() => cancelledAppointment(appointment._id)}
+            className="w-9 h-9 p-2 rounded-xl cursor-pointer bg-red-50 border border-red-100 hover:bg-red-500 hover:shadow-md hover:scale-105 transition-all duration-300"
+            src={assets.cancel_icon}
+            alt=""
+          />
+
+        }
+                  {/* {appointment.status !== "completed" &&
                    appointment.status !== "cancelled" && (
 
                     <button
@@ -438,7 +463,7 @@ const DashBoard = () => {
                       Cancel
                     </button>
 
-                  )}
+                  )} */}
 
                 </div>
 

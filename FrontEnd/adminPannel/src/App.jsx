@@ -21,6 +21,7 @@ import ConsultationDoctor from './pages/Doctors/ConsDoctor'
 import Queue from './pages/Admin/Queue';
 import VideoConsDoc from './pages/Doctors/VideoConsDoc'
 import { Navigate } from 'react-router-dom';
+import AllUser from './pages/Admin/allUser';
 
 const App = () => {
   const { aToken } = useContext(AdminContext)
@@ -45,6 +46,7 @@ const App = () => {
             <Route path='/add-Doctor' element={<AddDoctor />} />
             <Route path='/doctor-list' element={<DoctorList />} />
             <Route path='/queue-details' element={<Queue />} />
+            <Route path='/all-users' element={<AllUser />} />
 
 
             {/* Doctor route */}
